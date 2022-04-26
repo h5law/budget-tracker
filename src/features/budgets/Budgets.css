@@ -1,0 +1,12 @@
+.budgets-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-budget-form {
+  align-self: center;
+}
+
+.budgets-wrapper {
+  list-style: none;
+}
