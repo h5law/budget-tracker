@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const CATEGORIES = [
+export const CATEGORIES = [
   'housing',
   'food',
   'personal',

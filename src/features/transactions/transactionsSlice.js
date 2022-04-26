@@ -1,13 +1,6 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
 
-import { addBudget, removeBudget } from '../budgets/budgetsSlice.js';
-
-const CATEGORIES = [
-  'housing',
-  'food',
-  'personal',
-  'travel'
-];
+import { CATEGORIES, addBudget, removeBudget } from '../budgets/budgetsSlice.js';
 
 const transactionsSlice = createSlice({
   name: 'transactionsSlice',
