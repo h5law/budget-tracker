@@ -1,6 +1,6 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-export const CATEGORIES = [
+const CATEGORIES = [
   'housing',
   'food',
   'personal',
@@ -10,19 +10,23 @@ export const CATEGORIES = [
 const budgetsSlice = createSlice({
   name: 'budgetsSlice',
   initialState: CATEGORIES.map(category => ({
-    id: nanoid(),
     category,
     amount: 0
   })),
   reducers: {
-    addBudget: (state, action) => {
-      state.push({ id: nanoid(), category: action.payload, amount: 0 });
+    addBudget: {
+      reducer: (state, action) => {
+        state.push(action.payload);
+      },
+      prepare: (category) => {
+        return { payload: { category, amount: 0 } };
+      },
     },
     removeBudget: (state, action) => {
-      return state.filter(budget => budget.id !== action.payload.id)
+      return state.filter(budget => budget.category !== action.payload.category)
     },
     editBudget: (state, action) => {
-      const index = state.findIndex(budget => budget.id === action.payload.id);
+      const index = state.findIndex(budget => budget.category === action.payload.category);
       state[index].amount = action.payload.amount
     },
   },

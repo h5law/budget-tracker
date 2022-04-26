@@ -23,10 +23,6 @@ const Budget = ({ budget }) => {
     dispatch(removeBudget(budget));
   };
 
-  const isLastBudget = () => {
-    return allBudgets[allBudgets.length - 1].id === budget.id ? true : false;
-  };
-
   return (
     <li className="budget-item">
       <div className="budget-info">
