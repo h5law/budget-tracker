@@ -7,6 +7,10 @@ header {
   padding: 25px;
 }
 
+.header-logo {
+  color: white;
+}
+
 .nav-links {
   display: flex;
   flex-grow: 2;
