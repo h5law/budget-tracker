@@ -23,17 +23,25 @@ const transactionsSlice = createSlice({
       },
       prepare: (category, amount, description) => {
         const id = nanoid();
+        const date = new Date();
+        const current = date.toLocaleString();
         return { payload: {
-          id,
-          amount,
           category,
-          description,
+          transaction: {
+            id,
+            category,
+            amount,
+            description,
+            dateCreated: current,
+          },
         } };
       },
     },
     removeTransaction: (state, action) => {
       const index = state.findIndex(tx => tx.category === action.payload.category);
-      state[index].transactions.filter(tx => tx.id !== action.payload.tx.id);
+      state[index].transactions = state[index].transactions.filter(tx => {
+        return tx.id !== action.payload.id
+      });
     },
     editTransaction: (state, action) => {
       const index = state.findIndex(tx => tx.category === action.payload.category);

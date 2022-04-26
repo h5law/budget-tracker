@@ -1,0 +1,11 @@
+.new-transaction {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 2rem;
+  width: 100%;
+}
+
+.create-transaction * {
+  margin: 0 15px;
+}

@@ -33,5 +33,9 @@ const budgetsSlice = createSlice({
 });
 
 export const selectBudgets = (state) => state.budgets;
+export const selectCategories = (state) => {
+  return state.budgets.map(budget => budget.category);
+};
+
 export const { addBudget, removeBudget, editBudget } = budgetsSlice.actions;
 export default budgetsSlice.reducer;

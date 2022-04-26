@@ -1,0 +1,27 @@
+.transaction-card {
+  padding: 20px;
+}
+
+.transaction-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.transaction-labels h4 {
+  font-size: 16px;
+  color: gray;
+}
+
+.transaction-labels h3 {
+  text-transform: capitalize;
+}
+
+.remove-transaction {
+  align-self: center;
+}
+
+.transaction-amount {}
+
+.transaction-date {
+  font-size: 14px;
+}
