@@ -43,7 +43,7 @@ const Budgets = () => {
         <ul className="budgets-wrapper">
           {budgets.map(budget => (
             <Budget
-              key={budget.category}
+              key={budget.id}
               budget={budget} />
           ))}
           </ul>
