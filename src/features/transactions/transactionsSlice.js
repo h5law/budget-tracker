@@ -24,8 +24,8 @@ const transactionsSlice = createSlice({
       return state.filter(tx => tx.id !== action.payload.id);
     },
     editTransaction: (state, action) => {
-      const index = state.findIndex(tx => tx.id === action.payload.id);
-      state[index] = action.payload;
+      const index = state.findIndex(tx => tx.id === action.payload.new.id);
+      state[index] = action.payload.new;
     },
   },
   extraReducers: (builder) => {

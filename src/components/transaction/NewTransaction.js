@@ -13,15 +13,15 @@ const NewTransaction = () => {
 
   const [amount, setAmount] = useState(0);
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState(categories[0]);
+  const [category, setCategory] = useState('');
 
+  // true = disabled, false = enabled
   const fundsAvailable = () => {
+    if (category === '') return true;
     const index = budgets.findIndex(budget => budget.category === category);
     if (amount <= budgets[index].remaining) {
-      // disabled is inactive
       return false;
     }
-    // disabled is active
     return true;
   };
 
@@ -46,9 +46,10 @@ const NewTransaction = () => {
           name="categories"
           id="categories"
           onChange={handleChange}
-          value={category}
           required
+          defaultValue="default"
         >
+          <option value="default" disabled hidden>Choose a category</option>
           {categories.map(category => (
             <option value={category} key={category}>
               {category.charAt(0).toUpperCase() + category.slice(1)}

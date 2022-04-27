@@ -8,12 +8,12 @@
   justify-content: space-between;
 }
 
-.category-label {
+.budget-label {
   font-size: 16px;
   color: grey;
 }
 
-.category-title {
+.budget-title {
   font-weight: 700;
   text-transform: capitalize;
 }
@@ -24,6 +24,7 @@
   font-weight: 500;
 }
 
+.budget-remaining,
 .budget-total {
   display: flex;
   flex-direction: row;

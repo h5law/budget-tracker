@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
@@ -15,6 +16,7 @@ const Budget = ({ budget }) => {
   const allBudgets = useSelector(selectBudgets);
   const transactions = useSelector(selectTransactions);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,12 +28,17 @@ const Budget = ({ budget }) => {
     dispatch(removeBudget(budget));
   };
 
+  const handleRedirect = () => {
+    const path = `/budget/${budget.category}`;
+    navigate(path);
+  };
+
   return (
     <li className="budget-item">
       <div className="budget-info">
         <div>
-          <h4 className="category-label">Category</h4>
-          <h3 className="category-title">{budget.category}</h3>
+          <h4 className="budget-label">Category</h4>
+          <h3 className="budget-title">{budget.category}</h3>
         </div>
         <div>
           <button
@@ -44,6 +51,9 @@ const Budget = ({ budget }) => {
       </div>
       <div className="budget-remaining">
         <h4>Funds remaining: {budget.remaining}</h4>
+        <button onClick={() => navigate(`/budget/${budget.category}`)}>
+            View Details
+        </button>
       </div>
       <div className="budget-total">
         <h4>Total Budget: {budget.amount}</h4>

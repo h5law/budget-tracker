@@ -1,0 +1,27 @@
+.etx-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.etx-labels {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 16px;
+  color: gray;
+}
+
+.value {
+  font-size: 20px;
+  text-transform: capitalize;
+}
+
+.remove-transaction {
+  align-self: center;
+}
+

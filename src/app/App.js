@@ -3,6 +3,7 @@ import {BrowserRouter, Navigate, Routes, Route} from 'react-router-dom';
 import Header from '../components/header/Header.js';
 import Budgets from '../features/budgets/Budgets.js';
 import Transactions from '../features/transactions/Transactions.js';
+import Category from '../features/category/Category.js';
 
 const App = () => {
   return (
@@ -11,12 +12,16 @@ const App = () => {
       <main>
         <Routes>
           <Route
+          path="/budget/:category"
+            element={<Category />}
+          />
+          <Route
             path="/budgets"
-          element={<Budgets />}
+            element={<Budgets />}
           />
           <Route
             path="/transactions"
-          element={<Transactions />}
+            element={<Transactions />}
           />
           <Route
             path="/"
