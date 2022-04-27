@@ -1,32 +1,23 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit';
+import { createSlice, createSelector, nanoid } from '@reduxjs/toolkit';
 
-import { CATEGORIES, addBudget, removeBudget } from '../budgets/budgetsSlice.js';
+import { removeBudget } from '../budgets/budgetsSlice.js';
 
 const transactionsSlice = createSlice({
   name: 'transactionsSlice',
-  initialState: CATEGORIES.map(category => ({
-    category,
-    transactions: []
-  })),
+  initialState: [],
   reducers: {
     addTransaction: {
       reducer: (state, action) => {
-        const index = state.findIndex(tx => tx.category === action.payload.category);
-        state[index].transactions.push(action.payload.transaction);
+        state.push(action.payload);
       },
       prepare: (category, amount, description) => {
-        const id = nanoid();
         const date = new Date();
-        const current = date.toLocaleString();
         return { payload: {
+          id: nanoid(),
           category,
-          transaction: {
-            id,
-            category,
-            amount,
-            description,
-            dateCreated: current,
-          },
+          amount,
+          description,
+          dateCreated: date.toLocaleString(),
         } };
       },
     },
@@ -43,11 +34,8 @@ const transactionsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(addBudget, (state, action) => {
-      state.push({category: action.payload, transactions: []});
-    });
     builder.addCase(removeBudget, (state, action) => {
-      return state.filter(budget => budget.category !== action.payload.category);
+      return state.filter(tx => tx.category !== action.payload.category);
     });
   },
 });
