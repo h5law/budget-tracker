@@ -6,12 +6,17 @@ import { selectTransactions, selectTransactionsByCategory } from './transactions
 
 const Transactions = () => {
   const transactions = useSelector(selectTransactions);
+  const newestFirst = transactions.map(i => i);
+  newestFirst.sort((a, b) => {
+    if (a.dateCreated === b.dateCreated) return 0;
+    return (a.dateCreated < b.dateCreated) ? 1 : -1
+  });
 
   return (
     <div className="page-wrapper">
       <NewTransaction />
       <ul className="transactions-container">
-        {(transactions.length > 0) && transactions.map(tx => (
+        {(newestFirst.length > 0) && newestFirst.map(tx => (
           <Transaction tx={tx} key={tx.id} />
         ))}
       </ul>

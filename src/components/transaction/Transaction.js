@@ -13,25 +13,25 @@ const Transaction = ({ tx }) => {
 
   return (
     <li className="transaction-card">
-      <div className="transaction-info">
-        <div className="transaction-labels">
-          <h4>{tx.category}</h4>
-          <h3>{tx.description}</h3>
-        </div>
-        <div>
-          <button
-            className="remove-transaction"
-            onClick={handleRemove}
-          >
-            X
-          </button>
-        </div>
+      <div className="transaction-labels">
+        <h4 className="label">{tx.category}</h4>
+        <h3 className="value">{tx.description}</h3>
       </div>
       <div className="transaction-amount">
-        <p>Amount: {tx.amount}</p>
+        <h4 className="label">Amount:</h4>
+        <h3 className="value">{tx.amount}</h3>
       </div>
       <div className="transaction-date">
-        <p>{tx.dateCreated}</p>
+        <h4 className="label">Created:</h4>
+        <h3 className="value">{tx.dateCreated}</h3>
+      </div>
+      <div>
+        <button
+          className="remove-transaction"
+          onClick={handleRemove}
+        >
+          X
+        </button>
       </div>
     </li>
   );

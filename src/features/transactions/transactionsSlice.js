@@ -11,13 +11,12 @@ const transactionsSlice = createSlice({
         state.push(action.payload);
       },
       prepare: (category, amount, description) => {
-        const date = new Date();
         return { payload: {
           id: nanoid(),
           category,
           amount,
           description,
-          dateCreated: date.toLocaleString(),
+          dateCreated: Date.now(),
         } };
       },
     },

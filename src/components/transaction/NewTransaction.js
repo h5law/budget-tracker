@@ -1,18 +1,29 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { selectCategories } from '../../features/budgets/budgetsSlice.js';
+import { selectBudgets, selectCategories } from '../../features/budgets/budgetsSlice.js';
 import { addTransaction } from '../../features/transactions/transactionsSlice.js';
 
 import './NewTransaction.css';
 
 const NewTransaction = () => {
+  const budgets = useSelector(selectBudgets);
   const categories = useSelector(selectCategories);
   const dispatch = useDispatch();
 
   const [amount, setAmount] = useState(0);
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState(categories[0]);
+
+  const fundsAvailable = () => {
+    const index = budgets.findIndex(budget => budget.category === category);
+    if (amount <= budgets[index].remaining) {
+      // disabled is inactive
+      return false;
+    }
+    // disabled is active
+    return true;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,7 +73,7 @@ const NewTransaction = () => {
           onChange={(e) => setDescription(e.currentTarget.value)}
           placeholder="Enter description"
         />
-        <button>Add</button>
+        <button disabled={fundsAvailable()}>Add</button>
       </form>
     </div>
   );
