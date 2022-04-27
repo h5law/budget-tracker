@@ -6,17 +6,20 @@ import {
   editBudget,
   removeBudget
 } from '../../features/budgets/budgetsSlice.js';
+import { selectTransactions } from '../../features/transactions/transactionsSlice.js';
 
 import './Budget.css';
 
 const Budget = ({ budget }) => {
   const [amount, setAmount] = useState(budget.amount);
   const allBudgets = useSelector(selectBudgets);
+  const transactions = useSelector(selectTransactions);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(editBudget({...budget, amount: amount}));
+    setAmount(0);
   };
 
   const handleRemove = () => {
@@ -39,8 +42,11 @@ const Budget = ({ budget }) => {
           </button>
         </div>
       </div>
-      <div className="budget-funds">
-        <p>Funds remaining: {budget.amount}</p>
+      <div className="budget-remaining">
+        <h4>Funds remaining: {budget.remaining}</h4>
+      </div>
+      <div className="budget-total">
+        <h4>Total Budget: {budget.amount}</h4>
         <form className="edit-funds" onSubmit={handleSubmit}>
           <input
             type="number"
