@@ -22,15 +22,11 @@ const transactionsSlice = createSlice({
       },
     },
     removeTransaction: (state, action) => {
-      const index = state.findIndex(tx => tx.category === action.payload.category);
-      state[index].transactions = state[index].transactions.filter(tx => {
-        return tx.id !== action.payload.id
-      });
+      return state.filter(tx => tx.id !== action.payload.id);
     },
     editTransaction: (state, action) => {
-      const index = state.findIndex(tx => tx.category === action.payload.category);
-      const toEdit = state[index].transactions.findIndex(tx => tx.id === action.payload.id);
-      state[index].transactions[toEdit] = action.payload;
+      const index = state.findIndex(tx => tx.id === action.payload.id);
+      state[index] = action.payload;
     },
   },
   extraReducers: (builder) => {

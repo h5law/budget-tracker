@@ -11,7 +11,9 @@ const Transactions = () => {
     <div className="page-wrapper">
       <NewTransaction />
       <ul className="transactions-container">
-        {transactions.map(tx => (<Transaction tx={tx} key={tx.id} />))}
+        {(transactions.length > 0) && transactions.map(tx => (
+          <Transaction tx={tx} key={tx.id} />
+        ))}
       </ul>
     </div>
   );
