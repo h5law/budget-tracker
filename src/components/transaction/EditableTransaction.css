@@ -21,6 +21,7 @@
   font-weight: 600;
   border: none;
   -webkit-appearance: textfield;
+  text-transform: capitalize;
 }
 
 .value {
