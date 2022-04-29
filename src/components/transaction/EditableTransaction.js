@@ -24,7 +24,7 @@ const Transaction = ({ tx }) => {
         }
       }));
     }
-  }, [amount, description]);
+  }, [amount, description, dispatch, tx]);
 
   const handleRemove = () => {
     dispatch(removeTransaction(tx));
