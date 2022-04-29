@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
-  selectBudgets,
   editBudget,
   removeBudget
 } from '../../features/budgets/budgetsSlice.js';
@@ -13,8 +12,6 @@ import './Budget.css';
 
 const Budget = ({ budget }) => {
   const [amount, setAmount] = useState(budget.amount);
-  const allBudgets = useSelector(selectBudgets);
-  const transactions = useSelector(selectTransactions);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -26,11 +23,6 @@ const Budget = ({ budget }) => {
 
   const handleRemove = () => {
     dispatch(removeBudget(budget));
-  };
-
-  const handleRedirect = () => {
-    const path = `/budget/${budget.category}`;
-    navigate(path);
   };
 
   return (

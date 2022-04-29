@@ -3,12 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { selectBudgets, addBudget } from './budgetsSlice.js';
 import Budget from '../../components/budget/Budget.js';
-import NewTransaction from '../../components/transaction/NewTransaction.js';
 
 import './Budgets.css';
 
 const Budgets = () => {
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState('');
   const budgets = useSelector(selectBudgets);
   const dispatch = useDispatch();
 

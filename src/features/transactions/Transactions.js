@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 
 import Transaction from '../../components/transaction/Transaction.js';
 import NewTransaction from '../../components/transaction/NewTransaction.js';
-import { selectTransactions, selectTransactionsByCategory } from './transactionsSlice.js';
+import { selectTransactions } from './transactionsSlice.js';
 
 const Transactions = () => {
   const transactions = useSelector(selectTransactions);

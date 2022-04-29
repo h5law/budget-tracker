@@ -1,4 +1,4 @@
-import { createSlice, createSelector, nanoid } from '@reduxjs/toolkit';
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 import { removeBudget } from '../budgets/budgetsSlice.js';
 
