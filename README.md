@@ -7,6 +7,8 @@ remove the categories as well. You can also create/remove transactions and see
 your transaction history for each category. Transactions also affect how much
 money is left remaining in the budget for each category.
 
+Check out the [Live Site](https://budgetredux.netlify.app/)!
+
 ## Dependencies
 See `package-lock.json` for more details
  - @reduxjs/toolkit: ^1.8.1
