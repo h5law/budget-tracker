@@ -5,7 +5,6 @@ import {
   editTransaction,
   removeTransaction
 } from '../../features/transactions/transactionsSlice.js';
-import { selectBudgets } from '../../features/budgets/budgetsSlice.js';
 
 import './EditableTransaction.css';
 

@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import {
   editBudget,
   removeBudget
 } from '../../features/budgets/budgetsSlice.js';
-import { selectTransactions } from '../../features/transactions/transactionsSlice.js';
 
 import './Budget.css';
 
