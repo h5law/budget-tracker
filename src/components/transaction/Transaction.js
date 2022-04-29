@@ -11,6 +11,11 @@ const Transaction = ({ tx }) => {
     dispatch(removeTransaction(tx));
   };
 
+  const convertDate = () => {
+    const date = new Date(tx.dateCreated);
+    return date.toLocaleString();
+  };
+
   return (
     <li className="transaction-card">
       <div className="transaction-labels">
@@ -23,7 +28,7 @@ const Transaction = ({ tx }) => {
       </div>
       <div className="transaction-date">
         <h4 className="label">Created:</h4>
-        <h3 className="value">{tx.dateCreated}</h3>
+        <h3 className="value">{convertDate()}</h3>
       </div>
       <div>
         <button
