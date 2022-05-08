@@ -1,6 +1,10 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
 
-import { addTransaction, editTransaction } from '../transactions/transactionsSlice.js';
+import {
+  addTransaction,
+  editTransaction,
+  removeTransaction
+} from '../transactions/transactionsSlice.js';
 
 const CATEGORIES = [
   'housing',
@@ -52,6 +56,10 @@ const budgetsSlice = createSlice({
       const oldState = Object.assign({}, state[index]);
       state[index].remaining = oldState.remaining
                              - (Number(action.payload.new.amount) - Number(action.payload.old.amount));
+    });
+    builder.addCase(removeTransaction, (state, action) => {
+      const index = state.findIndex(budget => budget.category === action.payload.category);
+      state[index].remaining += Number(action.payload.amount);
     });
   },
 });
